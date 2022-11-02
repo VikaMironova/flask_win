@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Все объявления
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Все объявления</h1>
+
+    {% if ads|length > 0 %}
+
+        {% for elem in ads %}
+        <div class="alert alert-info">
+            <h2>{{ elem.owners }}</h2>
+            <h2>{{ elem.title }}</h2>
+            <p>{{ elem.text }}</p>
+            <p><b>Дата создания: {{ elem.date.date() }}</b></p>
+            <a href="/posts/{{ elem.id }}" class="btn btn-warning">Раскрыть</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>Объявлений нет</p>
+    {% endif %}
+</div>
+{% endblock %}
